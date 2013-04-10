@@ -1,3 +1,12 @@
+/******* BEGIN LICENCE BLOCK *******
+
+    libtera 
+    Copyright (C) 2012 Yomei
+
+    This program is free software; you can redistribute it and/or modify it under the terms of the BSD License.
+
+******* END LICENCE BLOCK *******/
+
 #include <stdlib.h>
 #include <string.h>
 

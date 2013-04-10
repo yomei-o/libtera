@@ -1,53 +1,11 @@
 /******* BEGIN LICENCE BLOCK *******
 
-    Sony Digital Photo Frame Application
-    Copyright (C) 2008 Sony Corporation.
+    libtera 
+    Copyright (C) 2012 Yomei
 
-    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License,version 2, as published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses>.
-
-    Linking Sony Digital Photo Frame Application statically or dynamically with other modules is making a combined work based on Sony Digital Photo Frame Application. Thus, the terms and conditions of the GNU General Public License cover the whole combination.
-
-    In addition, as a special exception, the copyright holders of Sony Digital Photo Frame Application give you permission to combine Sony Digital Photo Frame Application with free software programs or libraries that are released under the GNU LGPL and with code included in the standard release of Sony OS Abstraction Library (or modified versions of such code, with unchanged license). You may copy and distribute such a system following the terms of the GNU GPL for Sony Digital Photo Frame Application and the licenses of the other code concerned{, provided that you include the source code of that other code when and as the GNU GPL requires distribution of source code}.
-
-    Note that people who make modified versions of Sony Digital Photo Frame Application are not obligated to grant this special exception for their modified versions; it is their choice whether to do so. The GNU General Public License gives permission to release a modified version without this exception; this exception also makes it possible to release a modified version which carries forward this exception.
+    This program is free software; you can redistribute it and/or modify it under the terms of the BSD License.
 
 ******* END LICENCE BLOCK *******/
-
-
-/* the following line is the modification history by RCS
-   don't edit this line
-
-$Log: kanjitbl.h,v $
-Revision 1.2  2008/04/14 02:12:05  akatsuka
-no message
-
-Revision 1.1  2007/02/09 04:06:27  tooyama
-no message
-
-Revision 1.1.1.1  2006/08/17 09:13:20  yokoyama
-no message
-
-Revision 1.1  2006/07/27 06:29:15  tooyama
-initial
-
-Revision 1.4  2005/02/08 07:17:38  hmura
-delete test value
-
-Revision 1.3  2005/01/27 05:38:12  hmura
-add kanji 2byte to 1byte convert table
-
-Revision 1.2  2004/08/26 17:58:11  hmura
-not modify
-
-Revision 1.1  2003/09/18 03:24:20  yomei
-Initial revision
-
-
-*/
 
 #ifndef _KANJI_TBL_H_
 #define _KANJI_TBL_H_

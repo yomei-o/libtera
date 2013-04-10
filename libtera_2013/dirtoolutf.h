@@ -1,59 +1,11 @@
 /******* BEGIN LICENCE BLOCK *******
 
-    Sony Digital Photo Frame Application
-    Copyright (C) 2008 Sony Corporation.
+    libtera 
+    Copyright (C) 2012 Yomei
 
-    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License,version 2, as published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses>.
-
-    Linking Sony Digital Photo Frame Application statically or dynamically with other modules is making a combined work based on Sony Digital Photo Frame Application. Thus, the terms and conditions of the GNU General Public License cover the whole combination.
-
-    In addition, as a special exception, the copyright holders of Sony Digital Photo Frame Application give you permission to combine Sony Digital Photo Frame Application with free software programs or libraries that are released under the GNU LGPL and with code included in the standard release of Sony OS Abstraction Library (or modified versions of such code, with unchanged license). You may copy and distribute such a system following the terms of the GNU GPL for Sony Digital Photo Frame Application and the licenses of the other code concerned{, provided that you include the source code of that other code when and as the GNU GPL requires distribution of source code}.
-
-    Note that people who make modified versions of Sony Digital Photo Frame Application are not obligated to grant this special exception for their modified versions; it is their choice whether to do so. The GNU General Public License gives permission to release a modified version without this exception; this exception also makes it possible to release a modified version which carries forward this exception.
+    This program is free software; you can redistribute it and/or modify it under the terms of the BSD License.
 
 ******* END LICENCE BLOCK *******/
-
-
- 
-/* the following line is the modification history by RCS
-   don't edit this line
-
-$Log: dirtool.h,v $
-Revision 1.13  2008/04/14 02:12:05  akatsuka
-no message
-
-Revision 1.12  2008/01/28 10:01:46  tooyama
-my_utime
-
-Revision 1.11  2007/10/18 03:48:33  tooyama
-add my_rm
-add my_wrm
-add myrename
-
-Revision 1.10  2007/07/31 06:42:12  matsu
-no message
-
-Revision 1.9  2007/07/12 12:59:19  matsu
-no message
-
-Revision 1.8  2007/07/11 09:26:13  matsu
-no message
-
-Revision 1.7  2007/07/11 09:11:56  matsu
-no message
-
-Revision 1.6  2007/07/11 08:09:40  matsu
-no message
-
-Revision 1.5  2007/07/11 01:59:55  yomei
-no message
-
-
-*/
 
 
 #ifndef _DIRTOOL_H_
