@@ -1,11 +1,11 @@
 /******* BEGIN LICENCE BLOCK *******
 
-    Sony Nasne Application
-    Copyright (C) 2012 Sony Corporation.
-    Yomei.Otani@jp.sony.com
+    libtera 
+    Copyright (C) 2012 Yomei
+
+    This program is free software; you can redistribute it and/or modify it under the terms of the BSD License.
 
 ******* END LICENCE BLOCK *******/
-
 
 #include <stdio.h>
 #include <signal.h>
