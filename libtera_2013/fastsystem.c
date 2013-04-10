@@ -10,13 +10,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef _WIN32
-#include <windows.h>
-#include <winbase.h>
-#include <process.h>
-#include <io.h>
-#include <fcntl.h>
-#endif
+
+//#ifdef _WIN32
+//#include <windows.h>
+//#include <winbase.h>
+//#include <process.h>
+//#include <io.h>
+//#include <fcntl.h>
+//#endif
 
 #ifdef _MSC_VER
 #if _MSC_VER >= 1400
@@ -141,7 +142,7 @@ static int exec_internal_fastsystem( char *command, FILE *in, FILE *out )
 	for(i=0; i<MAXNUM_OF_CMDPARAM && argv[i]!=NULL; i++)
 		fprintf(stderr, "argv[%d]=>>>%s<<<\n", i, argv[i] );
 #endif
-	ret = (int)spawnvp( P_NOWAIT, argv[0]?argv[0]:"", (const char **)argv );
+	ret = (int)myspawnvp( MYP_NOWAIT, argv[0]?argv[0]:"", (const char **)argv );
 
 #ifdef I_USE_DEBUG_PRINT
 	fprintf(stderr, "pid=%d\n", ret );

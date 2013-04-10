@@ -19,17 +19,17 @@
 #include <string.h>
 
 
-#ifdef _WIN32
-#include <windows.h>
-#include <winbase.h>
-#include <process.h>
-#include <io.h>
-#include <fcntl.h>
-#endif
+//#ifdef _WIN32
+//#include <windows.h>
+//#include <winbase.h>
+//#include <process.h>
+//#include <io.h>
+//#include <fcntl.h>
+//#endif
 
-#ifdef unix
-#include <unistd.h>
-#endif
+//#ifdef unix
+//#include <unistd.h>
+//#endif
 
 #include "fastpopen.h"
 #include "spawn.h"
@@ -310,7 +310,7 @@ FILE *fastpopen( char *cmd, char *mode )
 	for(i=0; i<MAXNUM_OF_CMDPARAM && argv[i]!=NULL; i++)
 		fprintf(stderr, "argv[%d]=>>>%s<<<\n", i, argv[i] );
 #endif
-	pid=(int)spawnvp( P_NOWAIT, argv[0]?argv[0]:"", (const char **)argv );
+	pid=(int)myspawnvp( MYP_NOWAIT, argv[0]?argv[0]:"", (const char **)argv );
 
 	free(command);
 	command=NULL;
