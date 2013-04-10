@@ -43,14 +43,11 @@
 #include <unistd.h>
 #endif
 
-#include "api.h"
 #include "fastpopen.h"
 #include "spawn.h"
 #include "fdup.h"
 #include "mykill.h"
 
-#include "semaph.h"
-#include "mutex.h"
 #include "pathopen.h"
 
 #define MAXLEN_OF_CMDPATH 1024
@@ -64,52 +61,6 @@
 static FILE* list_stream[MAXNUM_OF_STREAM];
 static int list_pid[MAXNUM_OF_STREAM];
 
-
-
-static semaph_t sem=NULL;
-
-static void semdelete(void)
-{
-	if(sem)
-	{
-		destroy_semaph(sem);
-		sem=NULL;
-	}
-}
-static void semlock(void)
-{
-	if(sem==NULL)
-	{
-		sem=create_semaph();
-		atexit(semdelete);
-	}
-	if(sem)
-	{
-		lock_semaph(sem);
-	}
-}
-
-static void semunlock(void)
-{
-	if(sem==NULL)
-	{
-		sem=create_semaph();
-		atexit(semdelete);
-	}
-	if(sem)
-	{
-		unlock_semaph(sem);
-	}
-}
-
-void fastpinit(void)
-{
-	if(sem==NULL)
-	{
-		sem=create_semaph();
-		atexit(semdelete);
-	}
-}
 
 
 //#define I_USE_DEBUG_PRINT
@@ -284,18 +235,12 @@ FILE *fastpopen( char *cmd, char *mode )
 	char cpath[MAXLEN_OF_CMDPATH],cfpath[MAXLEN_OF_CMDPATH];
 #endif
 
-#if defined(_WINDOWS) || defined(_USRDLL)
-	myallocconsole();
-#endif
-
 	if( cmd==NULL ) return NULL;
 	if( mode[0]=='w' ) flag = W;
 	else if( mode[0]=='r' ) flag = R;
 	else return NULL;
 
 
-	m_handle = create_mutex( MUTEX_NAME_STDIN ) ;		//	mutex lock
-	if (m_handle)get_mutex( m_handle ) ;
 
 //	semlock();
 //	fprintf( stderr, "[fastpopen] in ----------------------------------------------\n" ) ;
@@ -382,7 +327,6 @@ FILE *fastpopen( char *cmd, char *mode )
 	free(command);
 	command=NULL;
 
-	semlock();
 	for(i=0;i<MAXNUM_OF_STREAM;i++)
 	{
 		if(list_stream[i]==0)
@@ -397,7 +341,6 @@ FILE *fastpopen( char *cmd, char *mode )
 			break;
 		}
 	}
-	semunlock();
 
 
 	if( flag==W ){
@@ -425,14 +368,6 @@ end:
 		free(command);
 		command=NULL;
 	}
-//	semunlock();
-//	fprintf( stderr, "[fastpopen] out ----------------------------------------------\n" ) ;
-	if (m_handle)
-	{
-		release_mutex( m_handle ) ;							//	mutex unlock
-		close_mutex( m_handle ) ;
-	}
-
 	return ret;
 }
 
@@ -454,10 +389,8 @@ void fastpclose( FILE *fp )
 //			fprintf( stderr, "fastpclose i:%d pid:%d\n", i, list_pid[i] ) ;
 			mywait(list_pid[i]);
 
-			semlock();
 			list_stream[i]=NULL;
 			list_pid[i]=0;
-			semunlock();
 			break;
 		}
 	}

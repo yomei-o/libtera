@@ -39,7 +39,6 @@ FILE *fastpopen( char *cmd, char *mode );
 void fastpclose( FILE *fp );
 void fastpabort( FILE *fp );
 void fastpkill( FILE *fp );
-void fastpinit(void);
 
 #ifdef __cplusplus
 }

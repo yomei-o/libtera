@@ -169,55 +169,6 @@ static int exec_internal_fastsystem( char *command, FILE *in, FILE *out )
 }
 
 
-#if defined(_WINDOWS) || defined(_USRDLL)
-static void myallocconsole(void)
-{
-	DWORD*	pflags = (DWORD*) 0x00020068; /* private memory */
-	WORD*	pshow  = (WORD*)  0x0002006C;
-	DWORD	backup_flags = *pflags;
-	WORD	backup_show  = *pshow;STARTUPINFO si;
-	static int flag=1;
-
-
-	GetStartupInfo(&si);
-	if(si.dwFlags == backup_flags && si.wShowWindow == backup_show) {
-		*pflags |= STARTF_USESHOWWINDOW;
-		*pshow  = SW_HIDE;
-	}
-
- 	AllocConsole();
-
-	*pflags = backup_flags;
-	*pshow  = backup_show;
-
-
-	/* check for STDIN is invalid */
-	//if( _get_osfhandle( 0 ) == -1 )
-	if(flag)
-	{
-		freopen("NUL","rb",stdin);
-		SetStdHandle(STD_INPUT_HANDLE,(HANDLE)_get_osfhandle(fileno(stdin)));
-	}
-	/* check for STDOUT is invalid */
-	//if( _get_osfhandle( 1 ) == -1 )
-	if(flag)
-	{
-		freopen("NUL","wb",stdout);
-		SetStdHandle(STD_OUTPUT_HANDLE,(HANDLE)_get_osfhandle(fileno(stdout)));
-	}
-	/* check for STDERR is invalid */
-	//if( _get_osfhandle( 2 ) == -1 )
-	if(flag)
-	{
-		freopen("NUL","wb",stderr);
-		SetStdHandle(STD_ERROR_HANDLE,(HANDLE)_get_osfhandle(fileno(stderr)));
-	}
-
-	flag=0;
-
-}
-
-#endif
 
 
 
@@ -227,10 +178,6 @@ static int internal_fastsystem( char *command, FILE *in, FILE *out, int* pid_lis
 	FILE *fpipe_w	=NULL;
 	char *p;
 	int ret;
-
-#if defined(_WINDOWS) || defined(_USRDLL)
-	myallocconsole();
-#endif
 
 	if( command==NULL || in==NULL || out==NULL ) return -1;
 
